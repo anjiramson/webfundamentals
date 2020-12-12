@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <input type="date" id="date">
+        <br><br>
+        <button onclick="showOutput()">Submit</button>
+        <div id="output"></div>
+
+        <script>
+            function showOutput(){
+                var date = document.getElementById("date").value;
+                var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                var d = new Date(date);
+                var dayName = days[d.getDay()];
+                var days = (new Date() - new Date(Number(date.split("-")[0]), Number(date.split("-")[1]), Number(date.split("-")[2]))) / (1000 * 60 * 60 * 24);
+                let text1 = document.createElement("h2");
+                text1.innerHTML = "Day of the week : " + dayName;
+                let text2 = document.createElement("h2");
+                text2.innerHTML = "Age in days : " + days.toFixed(0);
+                document.getElementById("output").appendChild(text1);
+                document.getElementById("output").appendChild(text2);
+                document.body.style.backgroundColor = "red";
+                if(Number(date.split("-")[0]) % 2 == 0){
+                    document.body.style.backgroundColor = "blue";
+                }
+                else{
+                    document.body.style.backgroundColor = "green";
+                } 
+            }
+        </script>
+    </body>
+</html>
